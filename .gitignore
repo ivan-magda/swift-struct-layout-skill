@@ -1,0 +1,9 @@
+# Local research and evaluation material; never part of the installed skill.
+/research/
+/archives/
+/docs/
+/evals/
+/.playwright-mcp/
+.DS_Store
+.build/
+*.dSYM/
