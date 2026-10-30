@@ -4,8 +4,6 @@ An AI agent skill for reviewing and optimizing the memory layout of native Swift
 
 Use it to review one type, find promising candidates across a module, or investigate a large buffer of values. Start with a source-only review, then measure the candidates that matter. When you ask for an optimization, the agent checks compatibility, makes a minimal change, and verifies the result.
 
-The skill uses the open [Agent Skills](https://agentskills.io/specification) format. It has no dependency on a particular AI provider, MCP server, or other skill. Its main platform context is iOS and macOS on arm64; results for other targets need their own evidence.
-
 ## Contents
 
 - [Background](#background)
@@ -56,7 +54,7 @@ npx skills add https://github.com/ivan-magda/swift-struct-layout-skill --skill s
 
 Choose your coding agent when prompted. The installer discovers the skill from the root `SKILL.md`; no provider-specific plugin is required.
 
-A source-only review needs access to your code. Layout measurements need an appropriate Swift toolchain and, where relevant, the target SDK or runtime. The included standalone example uses Swift language mode 6.
+A source-only review needs access to your code. Layout measurements need an appropriate Swift toolchain and, where relevant, the target SDK or runtime.
 
 ## Usage
 
@@ -114,7 +112,7 @@ swift-struct-layout-skill/
     └── struct-layout.svg
 ```
 
-[SKILL.md](SKILL.md) selects the depth of work and links to the relevant reference. The guides provide [source-only triage](references/triage.md), [layout reasoning](references/layout.md), [compatibility checks](references/compatibility.md) and [measurement methods](references/measurement.md). The example is a standalone illustration, not a project-wide scanner or automatic rewriter.
+[SKILL.md](SKILL.md) selects the depth of work and links to the relevant reference. The guides provide [source-only triage](references/triage.md), [layout reasoning](references/layout.md), [compatibility checks](references/compatibility.md) and [measurement methods](references/measurement.md).
 
 ## Contributing
 
