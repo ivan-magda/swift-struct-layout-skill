@@ -69,6 +69,7 @@ Inspect optimized IR or assembly to check that the intended work remains inside 
 From the skill package root, run this POSIX-shell sequence with a Swift toolchain that supports language mode 6:
 
 ```sh
+(
 probe_dir=$(mktemp -d "${TMPDIR:-/tmp}/swift-layout-probe.XXXXXX") || exit 1
 trap 'rm -f "$probe_dir/layout-probe"; rmdir "$probe_dir"' EXIT
 
@@ -78,6 +79,7 @@ uname -a
 printf '%s\n' 'language mode: 6; optimization: -O; SDK/target: compiler defaults'
 swiftc -swift-version 6 -O examples/layout-probe.swift -o "$probe_dir/layout-probe" &&
   "$probe_dir/layout-probe"
+)
 ```
 
-The temporary executable uses the native compiler defaults; record any SDK or target overrides if you adapt the command. The example declares its own internal types in one module, without library evolution. Cleanup removes only the executable and temporary directory created here. Keep project build caches for repeated real-type probes. Results from this example describe these declarations on the executing target, not the original types in another project or another target.
+The subshell keeps `probe_dir`, the exit trap, and any `exit` local to this sequence; cleanup runs when it finishes. The temporary executable uses the native compiler defaults; record any SDK or target overrides if you adapt the command. The example declares its own internal types in one module, without library evolution. Cleanup removes only the executable and temporary directory created here. Keep project build caches for repeated real-type probes. Results from this example describe these declarations on the executing target, not the original types in another project or another target.
